@@ -76,7 +76,7 @@ def quitar_libro(libros, titulo):
 # Prueba la función con algunos valores
 libros = [libro1, libro2, libro3]
 print(quitar_libro(libros, "1984"))
-print(quitar_libro(libros, "El Principito"))
+#print(quitar_libro(libros, "El Principito")) # comente para que no se quede en el error
 
 
 """
@@ -86,8 +86,19 @@ que retorne un diccionario con la cantidad de libros por autor.
 """
 
 # Escribe tu código aquí
+def crear_inventario(libros):
+    inventario = {}
+    for libro in libros:
+        autor = libro['autor']
+
+        if autor in inventario:
+            inventario[autor] += 1
+        else:
+            inventario[autor] = 1
+    return inventario
 
 # Prueba la función con algunos valores
+print(crear_inventario(libros))
 
 
 """
@@ -97,8 +108,15 @@ que retorne una lista con los títulos de los libros escritos por el autor espec
 """
 
 # Escribe tu código aquí
+def libros_por_autor(libros, autor):
+    titulos = []
+    for libro in libros:
+        if libro['autor'] == autor:
+             titulos.append(libro['titulo'])
+    return titulos
 
 # Prueba la función con algunos valores
+print(libros_por_autor(libros,"Miguel de Cervantes"))
 
 """
 --- Ejercicio 7: Función que Retorna un Booleano ---
@@ -107,6 +125,13 @@ que retorne `True` si el libro existe en la lista, y `False` en caso contrario.
 """
 
 # Escribe tu código aquí
+def existe_libro(libros, titulo):
+    for libro in libros:
+        if libro['titulo'] == titulo:
+            return True
+    return False
 
 # Prueba la función con algunos valores
+print(existe_libro(libros, "Cien años de soledad"))
+print(existe_libro(libros, "1984"))
 
