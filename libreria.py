@@ -17,11 +17,11 @@ def agregar_libro(titulo, autor):
 # Prueba la función con algunos valores
 libro1 = agregar_libro("Cien años de soledad", "Gabriel García Márquez")
 libro2 = agregar_libro("1984", "George Orwell")
-libro_3 = {'titulo': 'Don Quijote de la Mancha', 'autor': 'Miguel de Cervantes'}
+libro3 = {'titulo': 'Don Quijote de la Mancha', 'autor': 'Miguel de Cervantes'}
 
 print(libro1)
 print(libro2)
-print(libro_3)
+print(libro3)
 
 
 """
@@ -38,7 +38,7 @@ def listar_libros(libros):
     return titulos
 
 # Prueba la función con algunos valores
-libros = [libro1, libro2, libro_3]
+libros = [libro1, libro2, libro3]
 print(listar_libros(libros))
 
 
@@ -49,18 +49,34 @@ que retorne el diccionario del libro que coincida con el título, o `None` si no
 """
 
 # Escribe tu código aquí
-
+def buscar_libro(libros, titulo):
+    for libro in libros:
+        if libro['titulo'] == titulo:
+            return libro
+    return None
 # Prueba la función con algunos valores
+print(buscar_libro(libros, "1984"))
+print(buscar_libro(libros, "Doña Barbara"))
 
 """
 --- Ejercicio 4: Manejo de Errores ---
 Crea una función llamada `quitar_libro` que acepte una lista de diccionarios `libros` y un `titulo` y 
 que intente quitar el libro con el título especificado. Si no se encuentra el libro, maneja el error adecuadamente.
 """
-
 # Escribe tu código aquí
+def quitar_libro(libros, titulo):
+    for libro in libros:
+        if libro["titulo"] == titulo:
+            libros.remove(libro)
+            return f"Exito: El libro '{titulo}' ha sido eliminado."
+
+    raise ValueError(f"Error: El libro '{titulo}' No se encontro")
+
 
 # Prueba la función con algunos valores
+libros = [libro1, libro2, libro3]
+print(quitar_libro(libros, "1984"))
+print(quitar_libro(libros, "El Principito"))
 
 
 """
